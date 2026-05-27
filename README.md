@@ -1,13 +1,19 @@
 # HireHub
 
-HireHub is a back-end job portal application currently under development using Spring Boot and MySQL.
+HireHub is a backend job portal application built using Spring Boot and MySQL. The project is currently under development with focus on building scalable REST APIs for authentication, job management, and recruitment workflows.
 
 ## Current Progress
 
 * Spring Boot project initialized
 * Maven project structure created
 * Database connected using `application.properties`
-* GitHub repository setup completed
+* Spring Boot project setup
+* MySQL database integration
+* REST API architecture
+* User registration API
+* Fetch users API
+* Layered backend structure
+* CORS configuration for frontend integration
 
 ## Tech Stack
 
@@ -22,27 +28,50 @@ HireHub is a back-end job portal application currently under development using S
 
 * MySQL
 
+## API Endpoints
+
+### Register User
+```
+POST /api/auth/register
+```
+
+### Get All Users
+```
+GET /api/auth/users
+```
+
 ## Project Status
 
 This project is currently in the initial development phase. Upcoming updates will include:
 
 * User authentication
+* DTO implementation
+* Password encryption
+* JWT authentication
 * Job posting APIs
 * Job application system
 * Role-based access
-* Frontend integration
 * Deployment
 
 ## Folder Structure
 
 ```bash
 src/
- ├── main/
- │    ├── java/
- │    └── resources/
- │         └── application.properties
- └── test/
+├── main/
+│     ├── java/com/mahesh/HireHub/
+│     │     ├── Controller/
+│     │     ├── Entity/
+│     │     ├── Repository/
+│     │     ├── Service/
+│     │     └── HireHubApplication.java
+│     └── resources/
+|            └── application.properties
+└── test/
 ```
+
+### Architecture
+
+Controller -> Service -> Repository -> Database
 
 ## Getting Started
 

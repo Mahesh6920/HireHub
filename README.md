@@ -15,6 +15,12 @@ HireHub is a backend job portal application built using Spring Boot and MySQL. T
 * Layered backend structure
 * CORS configuration for frontend integration
 
+## Current Features
+* User registeration API
+* Get all users API
+* Get user by email API
+* Delete user API
+
 ## Tech Stack
 
 ### Backend
@@ -38,6 +44,16 @@ POST /api/auth/register
 ### Get All Users
 ```
 GET /api/auth/users
+```
+
+### Get User By Email
+```
+GET /api/auth/user?email=user@example.com
+```
+
+### Delete User
+```
+DELETE /api/auth/user/{id}
 ```
 
 ## Project Status

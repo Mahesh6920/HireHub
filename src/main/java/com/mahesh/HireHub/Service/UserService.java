@@ -16,21 +16,35 @@ public class UserService {
 	private UserRepository userRepo;
 
 	public boolean register(User user) {
-		
+
 		if (userRepo.existsByEmail(user.getEmail())) {
 			return false;
 		}
-		
+
 		userRepo.save(user);
-		
+
 		return true;
 	}
 
 	public List<User> getUsers() {
 		return userRepo.findAll();
 	}
-	
-	
-	
-	
+
+	public User getUserByEmail(String email) {
+		return userRepo.findByEmail(email)
+				.orElseThrow(() -> new RuntimeException("User Not Found."));
+	}
+
+	public boolean deleteuser(int id) {
+		if (!userRepo.existsById(id)) {
+			return false;
+		}
+
+		userRepo.deleteById(id);
+		return true;
+	}
+
+
+
+
 }

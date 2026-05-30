@@ -44,6 +44,13 @@ public class UserService {
 		return true;
 	}
 
+	public boolean updateUser(User user) {
+		if (userRepo.save(user) != null) {
+			return true;
+		}
+		return false;
+	}
+
 
 
 

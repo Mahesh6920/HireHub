@@ -15,14 +15,27 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "users")
-public class User {
+@Table(name = "recruiters")
+public class Recruiter {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	public User(String name, String email, String password, Role role) {
+	@Nonnull
+	private String name;
+	
+	@Column(unique = true)
+	private String email;
+	
+	@Nonnull
+	private String password;
+	
+	public Recruiter() {
+		super();
+	}
+
+	public Recruiter(String name, String email, String password, Role role) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -30,17 +43,21 @@ public class User {
 		this.role = role;
 	}
 
-	public User() {
-		super();
-	}
-
-	public User(int id, String name, String email, String password, Role role) {
+	public Recruiter(int id, String name, String email, String password, Role role) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.password = password;
 		this.role = role;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -59,14 +76,6 @@ public class User {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public Role getRole() {
 		return role;
 	}
@@ -75,17 +84,14 @@ public class User {
 		this.role = role;
 	}
 	
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	
-	@Nonnull
-	private String name;
-	
-	@Column(unique = true)
-	private String email;
-	
-	@Nonnull
-	private String password;	
-	
+	public String password() {
+		return password;
+	}
+
 	@Enumerated(EnumType.STRING)
 	private Role role;
-	
 }

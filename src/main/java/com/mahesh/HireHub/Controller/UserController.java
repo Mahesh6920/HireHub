@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mahesh.HireHub.Entity.User;
 import com.mahesh.HireHub.Service.UserService;
 
-@CrossOrigin(origins = "http://localhost:5173/")
+//@CrossOrigin(origins = "http://localhost:5173/")
 @RestController
 @RequestMapping("/api/auth")
 public class UserController {

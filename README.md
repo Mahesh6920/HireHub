@@ -1,6 +1,6 @@
 # HireHub
 
-HireHub is a backend job portal application built using Spring Boot and MySQL. The project is currently under development with focus on building scalable REST APIs for authentication, job management, and recruitment workflows.
+HireHub is a backend job portal application built using Spring Boot and MySQL. The project focuses on building scalable REST APIs for user management, recruiter management, authentication, authorization, and recruitment workflows.
 
 ## Current Progress
 
@@ -13,6 +13,9 @@ HireHub is a backend job portal application built using Spring Boot and MySQL. T
 * User registration API
 * Fetch users API
 * Layered backend structure
+* Spring Security integration
+* Role-Based Access Control (RBAC)
+* HTTP Basic Authentication
 * CORS configuration for frontend integration
 
 ## Current Features
@@ -21,6 +24,34 @@ HireHub is a backend job portal application built using Spring Boot and MySQL. T
 * Get user by email API
 * Delete user API
 * Update user API
+
+## Security Features
+* Spring Security 7
+* HTTP Basic Authentication
+* Role-Based Authorization
+* Custom UserDetailsService
+* Custom RecruiterDetailsService
+* DaoAuthenticationProvider
+* Protected API Endpoints
+* Stateless Security Configuration
+
+# 🔐 Spring Security Implementation
+
+Implemented Spring Security authentication and authorization for Users and Recruiters.
+
+## Features Added
+* User Registration API
+* Recruiter Registration API
+* Role-Based Access Control (RBAC)
+* Password validation through Spring Security AuthenticationProvider
+
+## Roles
+| Role      | Access                                  |
+| --------- | --------------------------------------- |
+| USER      | Access to `/api/user/**` endpoints      |
+| RECRUITER | Access to `/api/recruiter/**` endpoints |
+| ADMIN     | Access to `/api/admin/**` endpoints     |
+
 
 ## Tech Stack
 
@@ -66,13 +97,13 @@ UPDATE /api/auth/user
 
 This project is currently in the initial development phase. Upcoming updates will include:
 
-* User authentication
-* DTO implementation
-* Password encryption
-* JWT authentication
+* Password Encryption using BCrypt
+* JWT Authentication
+* Account Locking after Failed Login Attempts
 * Job posting APIs
-* Job application system
-* Role-based access
+* Email Verification
+* DTO implementation
+* Forgot Password Functionality
 * Deployment
 
 ## Folder Structure
@@ -81,6 +112,7 @@ This project is currently in the initial development phase. Upcoming updates wil
 src/
 ├── main/
 │     ├── java/com/mahesh/HireHub/
+|     |     ├── Config/
 │     │     ├── Controller/
 │     │     ├── Entity/
 │     │     ├── Repository/
@@ -112,3 +144,8 @@ mvn spring-boot:run
 ## Author
 
 Mahesh Tailor
+
+* Java Backend Developer
+* Spring Boot Developer
+
+LinkedIn: https://www.linkedin.com/in/tailormahesh/

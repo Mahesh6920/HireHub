@@ -23,4 +23,24 @@ public class RecruiterService {
 		return true;
 	}
 
+
+	public boolean updateRecruiter(Recruiter recruiter) {
+		if (repo.save(recruiter) != null) {
+			return true;
+		}
+		
+		return false;
+	}
+
+
+	public boolean deleteRecruiter(int id) {
+		if (!repo.existsById(id)) {
+			return false;
+		}
+		
+		repo.deleteById(id);
+		return true;
+	}
+
+
 }

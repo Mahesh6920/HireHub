@@ -9,7 +9,7 @@ import com.mahesh.HireHub.Entity.User;
 import com.mahesh.HireHub.Repository.UserRepository;
 
 @Service
-public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
+public class CustomeUserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
 	
 	@Autowired
 	private UserRepository repo;
@@ -27,8 +27,9 @@ public class UserDetailsService implements org.springframework.security.core.use
 		return org.springframework.security.core.userdetails.User
 				.builder()
 				.username(user.getEmail())
-				.password(user.getPassword())
-				.build();
+		        .password(user.getPassword())
+		        .roles("USER")
+		        .build();
 	}	
 
 }

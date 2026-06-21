@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,9 +43,14 @@ public class UserController {
 				.badRequest().body("Not Register");
 	}
 
-	@GetMapping("/user")
-	public User getUserByEmail(@RequestParam String email) {
-		return userService.getUserByEmail(email);
+	@GetMapping("/login")
+	public String getUserByEmail() {
+		return "Loged In";
+	}
+	
+	@GetMapping("/me")
+	public Authentication me(Authentication authentication) {
+	    return authentication;
 	}
 
 	@DeleteMapping("/user/{id}")

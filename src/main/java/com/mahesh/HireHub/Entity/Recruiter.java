@@ -88,7 +88,7 @@ public class Recruiter {
 		this.password = password;
 	}
 	
-	public String password() {
+	public String getPassword() {
 		return password;
 	}
 

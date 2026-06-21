@@ -30,11 +30,6 @@ public class UserService {
 		return userRepo.findAll();
 	}
 
-	public User getUserByEmail(String email) {
-		return userRepo.findByEmail(email)
-				.orElseThrow(() -> new RuntimeException("User Not Found."));
-	}
-
 	public boolean deleteuser(int id) {
 		if (!userRepo.existsById(id)) {
 			return false;

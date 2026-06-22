@@ -3,6 +3,7 @@ package com.mahesh.HireHub.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,9 +22,10 @@ public class RecruiterController {
 	
 	@Autowired
 	private RecruiterService service;
-
+	
 	@PostMapping("/register")
 	public ResponseEntity<String> register(@RequestBody Recruiter recruiter) {
+		recruiter.setPassword(new BCryptPasswordEncoder(10).encode(recruiter.getPassword()));
 		
 		if (service.register(recruiter)) {
 			return ResponseEntity.ok().body("Recruiter registered successfully");

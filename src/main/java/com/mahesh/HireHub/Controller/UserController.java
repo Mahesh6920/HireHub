@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +27,7 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
+	
 	@GetMapping("/users")
 	public List<User> getUsers() {
 		return userService.getUsers();
@@ -34,6 +35,8 @@ public class UserController {
 
 	@PostMapping("/register")
 	public ResponseEntity<String> register(@RequestBody User user) {	
+		user.setPassword(new BCryptPasswordEncoder(10).encode(user.getPassword()));
+		
 		if (userService.register(user)) {
 			return ResponseEntity.ok("User registered successfully");
 		}

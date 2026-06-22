@@ -16,6 +16,7 @@ HireHub is a backend job portal application built using Spring Boot and MySQL. T
 * Spring Security integration
 * Role-Based Access Control (RBAC)
 * HTTP Basic Authentication
+* Encrypt the password by BCryptPasswordEncoder
 * CORS configuration for frontend integration
 
 ## Current Features
@@ -34,6 +35,7 @@ HireHub is a backend job portal application built using Spring Boot and MySQL. T
 * DaoAuthenticationProvider
 * Protected API Endpoints
 * Stateless Security Configuration
+* BCryptPasswordEncoder for encode the password
 
 # 🔐 Spring Security Implementation
 
@@ -52,6 +54,16 @@ Implemented Spring Security authentication and authorization for Users and Recru
 | RECRUITER | Access to `/api/recruiter/**` endpoints |
 | ADMIN     | Access to `/api/admin/**` endpoints     |
 
+# Configuration
+## 🔐 Password Encryption
+
+Passwords are securely encrypted using BCrypt before being stored in the database.
+
+## Implementation
+recruiter.setPassword(
+    new BCryptPasswordEncoder(10)
+        .encode(recruiter.getPassword())
+);
 
 ## Tech Stack
 
@@ -60,6 +72,8 @@ Implemented Spring Security authentication and authorization for Users and Recru
 * Java
 * Spring Boot
 * Spring Data JPA
+* Spring Security
+* MySQL
 * Maven
 
 ### Database
@@ -97,7 +111,6 @@ UPDATE /api/auth/user
 
 This project is currently in the initial development phase. Upcoming updates will include:
 
-* Password Encryption using BCrypt
 * JWT Authentication
 * Account Locking after Failed Login Attempts
 * Job posting APIs
